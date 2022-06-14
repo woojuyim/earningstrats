@@ -1,4 +1,9 @@
+# Build
 .ipynb_checkpoints
-/2022
-*.html
+/build
+*.egg-info
+__pycache__
 
+
+# Data
+/2022
