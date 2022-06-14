@@ -1,7 +1,6 @@
-# stock-earnings
+# Stock Earnings Data
 
-
-This package shows multiple data for stock's earning effect and aims to allow users to estimate the best strategies for any stock's during its earnings period conveniently. 
+This package shows multiple data for stocks' earning effect and aims to allow traders to estimate the best strategies for any stock during its earnings period conveniently 
 
 ## Common Strategies 
 
@@ -11,7 +10,7 @@ This package shows multiple data for stock's earning effect and aims to allow us
 - Selling Straddle
 - Iron Condor or Butterfly
 
-#### Expected Move <= Earning's Effect Estimate Gains + IV Crush Loss
+### Expected Move <= Earning's Effect Estimate Gains + IV Crush Loss
 
 - Buying Options
 - Buying Spreads
