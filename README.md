@@ -4,13 +4,16 @@ This package shows multiple data for stocks' earning effect and aims to allow tr
 
 ## Common Strategies 
 
-### Expected Move > Earning's Effect Estimate (Gains from IV Crush)
+### Expected Move > Earning's Effect Estimate
 
+- Gain from IV Crush
 - Selling CSP
 - Selling Straddle
 - Iron Condor or Butterfly
 
-### Expected Move <= Earning's Effect Estimate Gains + IV Crush Loss
+### Expected Move <= Earning's Effect Estimated Gains + IV Crush Loss
 
 - Buying Options
 - Buying Spreads
+
+

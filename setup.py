@@ -10,7 +10,7 @@ setup(
     long_description = long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/woojuyim/stock-earnings',
-    download_url = 'https://github.com/woojuyim/stock-earnings/archive/v_01.tar.gz',
+    download_url = 'https://github.com/woojuyim/stock-earnings/archive/refs/tags/v0.1.0.tar.gz',
     author='Wooju Yim',
     author_email='woojuyim126@gmail.com',
     license='Apache License',

@@ -39,4 +39,6 @@ def check_today(duration = "10y", days_added = 0):
     
     return (total, price)
 
-check_today("4y", 0)
+
+if __name__ == "__main__":
+    check_today("4y", 0)
