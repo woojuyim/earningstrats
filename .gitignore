@@ -3,7 +3,7 @@
 /build
 *.egg-info
 __pycache__
-
+/dist
 
 # Data
 /2022

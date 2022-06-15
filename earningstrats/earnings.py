@@ -3,8 +3,8 @@ import pandas as pd
 import yahoo_fin.stock_info as si
 from datetime import datetime, timedelta, date
 import os
-from option_set import *
-from options import get_expected_move, get_put_option_chain, get_earliest_deadline_options_chain
+from earningstrats.option_set import *
+from earningstrats.options import get_expected_move, get_put_option_chain, get_earliest_deadline_options_chain
 pd.options.display.float_format = '{:.4f}'.format
 
 def get_stock_earnings_price_effect(symbol, period = "5y"):
@@ -65,8 +65,8 @@ def get_stock_earnings_price_effect(symbol, period = "5y"):
     return earn_data
 
 
-def get_companies_with_earnings_today_AMC_or_tomm_BMO(add_days = 0, min_vol_sum = 3000, min_stock_price = 10):
-    curr_date = datetime.now().date() +  timedelta(add_days)
+def get_companies_with_earnings_today_AMC_or_tomm_BMO(day_shift = 0, min_vol_sum = 3000, min_stock_price = 10):
+    curr_date = datetime.now().date() +  timedelta(day_shift)
         
     earn_today = si.get_earnings_for_date(str(curr_date))
     earn_tomm = si.get_earnings_for_date(str(curr_date + timedelta(1)))
@@ -143,7 +143,7 @@ def get_IV_crush_for_puts():
     dir = os.path.join(str(date.today().year), str(date.today() + timedelta(-1)))
 
     if not os.path.exists(dir):
-        print("Directory does not exist for IV Crush")
+        print("Directory does not exist for IV Crush Calculations")
         return
     
     num_files = len([name for name in os.listdir(dir) if os.path.isfile(os.path.join(dir, name))])

@@ -6,8 +6,6 @@ from datetime import datetime, timedelta, date
 pd.options.display.float_format = '{:.4f}'.format
 
 
-
-
 def get_current_stock_price(symbol):
     tk = yf.Ticker(symbol)
     return tk.history(period='1d')['Close'][0]
@@ -109,7 +107,7 @@ def get_expected_move(symbol):
     return (per.mean(), straddle_sum / curr, total / curr, avg)
 
 def get_put_option_chain(symbol, price_ceiling = -1):
-    """ Get only the put option chain. Defaults to finding only ITM puts. Set price_ceiling to set cutoff 
+    """ Gets the put option chain. Defaults to finding only OTM puts. Set price_ceiling to set cutoff 
     """
     tk = yf.Ticker(symbol)
     exps = tk.options
