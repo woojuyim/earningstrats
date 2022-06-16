@@ -4,6 +4,7 @@ import yahoo_fin.stock_info as si
 from datetime import datetime, timedelta, date
 import os
 from earningstrats.option_set import *
+from earningstrats.util import *
 from earningstrats.options import get_expected_move, get_put_option_chain, get_earliest_deadline_options_chain
 pd.options.display.float_format = '{:.4f}'.format
 
@@ -21,8 +22,8 @@ def get_stock_earnings_price_effect(symbol, period = "5y"):
         dt_obj = datetime.strptime(earn_date, '%Y-%m-%dT%H:%M:%S.000Z')
         date = dt_obj.date()
         
-        # If hour is < 10, count as BMO, else count as AMC
-        if(dt_obj.hour < 10): 
+        # If hour is < 14, count as BMO, else count as AMC
+        if(dt_obj.hour < 14): 
             is_AMC = False
         else:
             is_AMC = True
@@ -73,19 +74,21 @@ def get_companies_with_earnings_today_AMC_or_tomm_BMO(day_shift = 0, min_vol_sum
     
     comp_today = pd.DataFrame.from_dict(earn_today)
     comp_tomm = pd.DataFrame.from_dict(earn_tomm)
-        
+
+    # print_full(comp_today)
+    # print_full(comp_tomm)        
     if comp_today.empty and comp_tomm.empty:
         return pd.DataFrame()
     
-    if not comp_today.empty:
+    if not comp_today.empty:        
         comp_today['startdatetime'] = pd.to_datetime(comp_today['startdatetime'])
-        index_names = comp_today[(comp_today['startdatetime'].dt.hour < 10)].index
+        index_names = comp_today[(comp_today['startdatetime'].dt.hour <= 14)].index
         comp_today = comp_today.drop(index_names)
         comp_today['startdatetimetype'] = 'AMC'
 
     if not comp_tomm.empty:
         comp_tomm['startdatetime'] = pd.to_datetime(comp_tomm['startdatetime'])
-        index_names = comp_tomm[(comp_tomm['startdatetime'].dt.hour >= 10)].index
+        index_names = comp_tomm[(comp_tomm['startdatetime'].dt.hour > 14)].index
         comp_tomm = comp_tomm.drop(index_names)
         comp_tomm['startdatetimetype'] = 'BMO'
         
@@ -137,6 +140,8 @@ def get_companies_with_earnings_today_AMC_or_tomm_BMO(day_shift = 0, min_vol_sum
 
     return comp
 
+
+# print_full(get_companies_with_earnings_today_AMC_or_tomm_BMO())
 def get_IV_crush_for_puts():
     """ Calculuate Previous day's IV crush"""
     
