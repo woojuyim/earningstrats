@@ -6,6 +6,7 @@ import os
 from earningstrats.option_set import *
 from earningstrats.util import *
 from earningstrats.options import get_expected_move, get_put_option_chain, get_earliest_deadline_options_chain
+
 pd.options.display.float_format = '{:.4f}'.format
 
 def get_stock_earnings_price_effect(symbol, period = "5y"):

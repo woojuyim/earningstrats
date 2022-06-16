@@ -6,12 +6,15 @@ from earningstrats.earnings import *
 def check_today(period = "5y", day_shift = 0, min_vol_sum = 3000, min_stock_price = 10):
     """
     Returns tuple of today AMC and tomorrow BMO companies' put option chain and historical earnings price effect
-    [0] - Put option Chain
-    [1] - Historical earnings price effect
+    Change days_added to shift day by that much. Customize minimum volume sum and stock price
+    [0] - OTM Put option Chain
+    [1] - Historical earnings price effect = Change period to change how far back historical price effect shows
+    Outputs to today_companies.html, today_options.html, today_price_effect.html
     """
     today_comp = get_companies_with_earnings_today_AMC_or_tomm_BMO(day_shift, min_vol_sum, min_stock_price)
     total = pd.DataFrame()
     price = pd.DataFrame()
+    
     yearPath = os.path.join(str(date.today().year))
     if not os.path.exists(yearPath):
         os.mkdir(yearPath)
@@ -43,9 +46,10 @@ def check_today(period = "5y", day_shift = 0, min_vol_sum = 3000, min_stock_pric
     today_comp.to_html("today_companies.html")
     total.to_html('today_options.html')
     price.to_html('today_price_effect.html')
-    get_IV_crush_for_puts()    
     return (total, price)
 
 
 if __name__ == "__main__":
     check_today("5y", day_shift = 0, min_vol_sum = 1000, min_stock_price = 10)
+    get_IV_crush_for_puts()    
+
