@@ -26,6 +26,10 @@ def get_earliest_deadline_options_chain(symbol):
     options = pd.DataFrame()
     e = exps[0] 
 
+    dt_obj = datetime.strptime(e, '%Y-%m-%d')
+    if (datetime.now()).date() == dt_obj.date(): 
+        e = exps[1]
+
     opt = tk.option_chain(e)
     calls = pd.DataFrame(opt.calls)
     puts = pd.DataFrame(opt.puts)
