@@ -5,7 +5,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name='earningstrats',
-    version = "0.1.2",
+    version = "0.1.3",
     description ='Use Stock Earnings Data to formulate strategies',
     long_description = long_description,
     long_description_content_type='text/markdown',
@@ -33,8 +33,8 @@ setup(
     platforms=['any'],
     keywords='pandas, yahoo finance, earnings, gamma, options',
     packages = find_packages(exclude=['contrib', 'docs', 'tests', 'examples']),
-    install_requires=['numpy==1.22.4', 'pandas==1.4.2', 'scipy==1.8.1',
-                      'yahoo_fin==0.8.9.1', 'yfinance==0.1.70'],
+    install_requires=['numpy', 'pandas>=1.4.2', 'scipy>=1.8.1',
+                      'yahoo_fin>=0.8.9.1', 'yfinance>=0.1.70'],
     entry_points={
         'console_scripts': [
             'sample = sample:main',
