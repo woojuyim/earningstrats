@@ -5,12 +5,12 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name='earningstrats',
-    version = "0.1.3",
+    version = "0.1.4",
     description ='Use Stock Earnings Data to formulate strategies',
     long_description = long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/woojuyim/earningstrats',
-    download_url = 'https://github.com/woojuyim/earningstrats/archive/refs/tags/v0.1.1.tar.gz',
+    # download_url = 'https://github.com/woojuyim/earningstrats/archive/refs/tags/v0.1.1.tar.gz',
     author='Wooju Yim',
     author_email='woojuyim126@gmail.com',
     license='Apache License',
