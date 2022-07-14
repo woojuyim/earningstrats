@@ -50,6 +50,6 @@ def check_today(period = "5y", day_shift = 0, min_vol_sum = 3000, min_stock_pric
 
 
 if __name__ == "__main__":
-    check_today(period = "4y", day_shift = 0, min_vol_sum = 1000, min_stock_price = 10)
+    check_today(period = "3y", day_shift = 0, min_vol_sum = 500, min_stock_price = 10)
     # get_IV_crush_for_puts()    
 
