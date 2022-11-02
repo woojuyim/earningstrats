@@ -60,8 +60,14 @@ def get_stock_earnings_price_effect(symbol, period = "5y"):
     new_row = pd.DataFrame({'day_close_to_next_day_open':earn_data['day_close_to_next_day_open'].abs().mean(), '%change_close_to_next_open':earn_data['%change_close_to_next_open'].abs().mean(), 
                             'day_close_to_next_day_close':earn_data['day_close_to_next_day_close'].abs().mean(), '%change_close_to_next_close':earn_data['%change_close_to_next_close'].abs().mean()}, 
                            index=["Absolute Average"])
+    
+    std = pd.DataFrame({'day_close_to_next_day_open':earn_data['day_close_to_next_day_open'].abs().std(), '%change_close_to_next_open':earn_data['%change_close_to_next_open'].abs().std(), 
+                            'day_close_to_next_day_close':earn_data['day_close_to_next_day_close'].abs().std(), '%change_close_to_next_close':earn_data['%change_close_to_next_close'].abs().std()}, 
+                           index=["Standard Deviation"])
 
     earn_data = pd.concat([earn_data, new_row])
+    earn_data = pd.concat([earn_data, std])
+
     earn_data.insert(0, 'Symbol', symbol)
 
     return earn_data
