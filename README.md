@@ -52,7 +52,7 @@ ea.get_stock_earnings_price_effect(symbol, period = "5y")
 
 
 """
-Get all the stocks with earnings today AMC or tomorrow BMO
+Get all the stocks with earnings today AMC or tomorrow BMO. Tomorrow BMO does not work on Fridays as of yet. 
 """
 ea.get_companies_with_earnings_today_AMC_or_tomm_BMO(day_shift = 0, min_vol_sum = 3000, min_stock_price = 10)
 
